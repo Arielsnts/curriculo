@@ -1,4 +1,3 @@
-// src/lib/pdf.ts
 import { PDFParse } from 'pdf-parse'
 
 /**
@@ -7,9 +6,10 @@ import { PDFParse } from 'pdf-parse'
 export async function extrairTextoDePDF(arquivo: File): Promise<string> {
     try {
         const arrayBuffer = await arquivo.arrayBuffer()
-        const buffer = Buffer.from(arrayBuffer)
+        
+        const dadosBinarios = new Uint8Array(arrayBuffer)
 
-        const pdf = new PDFParse(buffer)
+        const pdf = new PDFParse(dadosBinarios)
 
         const resultado = await pdf.getText()
 

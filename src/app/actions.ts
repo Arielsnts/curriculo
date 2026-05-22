@@ -1,6 +1,6 @@
 'use server'
 
-import { VagaInput, AnaliseOutput } from "@/types"
+import { VagaInput } from "@/types"
 import { extrairTextoDePDF } from "@/lib/pdf"
 import { gerarPrompt } from "@/lib/prompt"
 import { executarAnalise } from "@/lib/gemini"
