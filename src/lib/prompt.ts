@@ -57,7 +57,6 @@ export function gerarPrompt(vaga: VagaInput, curriculoTexto: string): string {
 Analise a compatibilidade do currículo fornecido com a vaga de emprego descrita abaixo.
 
 --- DADOS DA VAGA ---
-Título: ${vaga.title}
 Requisitos Obrigatórios: ${vaga.requisitos.join(', ')}
 Competências Desejadas: ${vaga.competencias.join(', ')}
 Diferenciais: ${vaga.diferenciais.join(', ')}

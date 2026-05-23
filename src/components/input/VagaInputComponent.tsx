@@ -1,6 +1,6 @@
 import { VagaInput } from "@/types"
 import { useState } from "react"
-import '../../app/styles.css'
+import './styles.css'
 
 interface vagaProps {
   vaga: VagaInput
@@ -40,19 +40,6 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="font-bold text-center text-xl">Vaga</h2>
-
-      {/* TÍTULO DA VAGA */}
-      <div className="flex flex-col gap-4">
-        <label htmlFor="title">Título</label>
-        <input
-          id="title"
-          type="text"
-          value={vaga.title}
-          onChange={(e) => setVaga({ ...vaga, title: e.target.value })}
-          placeholder="Digite o Título da Vaga"
-          required
-        />
-      </div>
 
       {/* CAMPO DE REQUISITOS */}
       <div className="flex flex-col gap-4">

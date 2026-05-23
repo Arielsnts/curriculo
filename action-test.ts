@@ -5,7 +5,6 @@ async function rodarTeste() {
     console.log("Iniciando teste da Server Action com o Gemini...\n");
 
     const vagaDeTeste: VagaInput = {
-        title: "Desenvolvedor Front-end React Júnior",
         requisitos: ["React", "TypeScript", "TailwindCSS"],
         competencias: ["Comunicação assertiva", "Metodologias Ágeis"],
         diferenciais: ["Next.js", "Consumo de APIs GraphQL"]

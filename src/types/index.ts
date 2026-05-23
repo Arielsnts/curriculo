@@ -4,7 +4,6 @@
  * Representa os dados da vaga estruturados pelo usuário no formulário.
  */
 export interface VagaInput {
-    title: string
     requisitos: string[]
     competencias: string[]
     diferenciais: string[]

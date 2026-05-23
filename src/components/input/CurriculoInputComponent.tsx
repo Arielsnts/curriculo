@@ -1,5 +1,5 @@
 import { useState } from "react"
-import '../../app/styles.css'
+import './styles.css'
 
 type InputType = "escolha" | "text" | "pdf"
 
