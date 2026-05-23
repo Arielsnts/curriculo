@@ -15,8 +15,10 @@ export function CurriculoInputComponent() {
       {inputType === "escolha" && (
         <div className="flex flex-col gap-4">
           <p>Escolha entre texto ou PDF:</p>
-          <button onClick={() => setInputType("text")} type="button">Texto</button>
-          <button onClick={() => setInputType("pdf")} type="button">PDF</button>
+          <div className="flex gap-2">
+            <button className="w-full" onClick={() => setInputType("text")} type="button">Texto</button>
+            <button className="w-full" onClick={() => setInputType("pdf")} type="button">PDF</button>
+          </div>
         </div>
       )}
 

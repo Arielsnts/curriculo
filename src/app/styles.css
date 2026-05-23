@@ -16,3 +16,36 @@
         transform: rotate(360deg);
     }
 }
+
+.error-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: #fee2e2;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  padding: 0 24px;
+  background-color: #ffffff;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+  color: #111827;
+}
+
+.btn:active {
+  background-color: #f3f4f6;
+}
