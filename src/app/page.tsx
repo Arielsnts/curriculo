@@ -1,10 +1,90 @@
 'use client'
 
-import { TelaInput } from "@/components/input/TelaInput"
+import { VagaInputComponent } from "../components/input/VagaInputComponent"
+import { CurriculoInputComponent } from "../components/input/CurriculoInputComponent"
+import { OutputComponent } from "@/components/output/OutputComponent"
+import { VagaInput, AnaliseOutput } from "@/types"
+import { useState } from "react"
+import { analisarCurriculo } from "@/app/actions"
+import "./styles.css"
+
+type View = "input" | "loading" | "output"
 
 export default function Home() {
+  const [view, setView] = useState<View>("output")
+
+  const [vaga, setVaga] = useState<VagaInput>({
+    title: '',
+    requisitos: [],
+    competencias: [],
+    diferenciais: []
+  })
+
+  const [resposta, setResposta] = useState<AnaliseOutput>({
+    score: 0,
+    resumo: "",
+    pontosFortes: [],
+    pontosFracos: [],
+    recomendacoes: []
+  })
+
+  async function handleFormSubmit(formData: FormData) {
+    setView("loading")
+
+    try {
+      formData.append('vaga', JSON.stringify(vaga))
+
+      const resultado: AnaliseOutput = await analisarCurriculo(formData)
+
+      setResposta(resultado)
+      setView("output")
+    }
+    catch (e) {
+      console.error(e)
+      setView("input")
+    }
+  }
 
   return (
-    <TelaInput />
+    <div className="flex flex-col gap-5 w-200 p-6">
+      {view === "input" && (
+        <div>
+          <h1 className="font-bold text-center text-xl">Analise o seu Currículo!</h1>
+
+          <p className="text-center text-[#374151]">
+            Compare a aderência do seu perfil profissional com os requisitos da vaga utilizando Inteligência Artificial. Suporta texto ou arquivos em PDF.
+          </p>
+
+          <form action={handleFormSubmit} className="flex flex-col gap-8">
+            <VagaInputComponent vaga={vaga} setVaga={setVaga} />
+
+            <CurriculoInputComponent />
+
+            <button type="submit" className="btn-analisar">Analisar</button>
+          </form>
+        </div>
+      )}
+
+      {view === "loading" && (
+        <div className="flex flex-col items-center justify-center gap-4 py-12">
+          <div className="loading-spinner"></div>
+
+          <div className="flex flex-col items-center gap-1 text-center">
+            <h2 className="text-lg font-semibold text-gray-800 animate-pulse">
+              Analisando Currículo...
+            </h2>
+            <p className="text-sm text-gray-500">
+              A inteligência artificial está mapeando suas competências.
+            </p>
+          </div>
+        </div>
+      )}
+
+      {view === "output" && (
+        <div>
+          <OutputComponent resposta={resposta} />
+        </div>
+      )}
+    </div>
   )
 }
