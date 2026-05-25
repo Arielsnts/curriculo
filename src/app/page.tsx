@@ -11,7 +11,7 @@ import "./styles.css"
 type View = "input" | "loading" | "output" | "erro"
 
 export default function Home() {
-  const [view, setView] = useState<View>("erro")
+  const [view, setView] = useState<View>("input")
   const [erroForm, setErroForm] = useState("")
   const [erroResposta, setErroResposta] = useState("")
   const [isPending, startTransition] = useTransition()
