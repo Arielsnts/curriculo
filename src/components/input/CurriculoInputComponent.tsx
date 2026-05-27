@@ -1,10 +1,10 @@
 import { useState } from "react"
-import './styles.css'
-
-type InputType = "escolha" | "text" | "pdf"
+import styles from "@/styles/input.module.css"
+import "@/styles/pdf.css"
+type InputType = "text" | "pdf"
 
 export function CurriculoInputComponent() {
-  const [inputType, setInputType] = useState<InputType>("escolha")
+  const [inputType, setInputType] = useState<InputType>("text")
 
   return (
     <div className="flex flex-col gap-4">
@@ -12,21 +12,11 @@ export function CurriculoInputComponent() {
 
       <input type="hidden" name="tipoCurriculo" value={inputType} />
 
-      {inputType === "escolha" && (
-        <div className="flex flex-col gap-4">
-          <p>Escolha entre texto ou PDF:</p>
-          <div className="flex gap-2">
-            <button className="w-full" onClick={() => setInputType("text")} type="button">Texto</button>
-            <button className="w-full" onClick={() => setInputType("pdf")} type="button">PDF</button>
-          </div>
-        </div>
-      )}
-
       {inputType === "text" && (
-        <div className="flex flex-col gap-4">
+        <div className={`${styles.inputText} flex flex-col gap-4`}>
           <label htmlFor="textoCurriculo">Digite o texto do seu Currículo:</label>
           <textarea placeholder="Currículo em Texto" name="textoCurriculo" id="textoCurriculo" required></textarea>
-          <button onClick={() => setInputType("escolha")} type="button">Voltar</button>
+          <button onClick={() => setInputType("pdf")} type="button">Mudar para PDF</button>
         </div>
       )}
 
@@ -40,7 +30,7 @@ export function CurriculoInputComponent() {
             accept=".pdf" 
             required 
           />
-          <button onClick={() => setInputType("escolha")} type="button">Voltar</button>
+          <button onClick={() => setInputType("text")} type="button">Mudar para Texto</button>
         </div>
       )}
       

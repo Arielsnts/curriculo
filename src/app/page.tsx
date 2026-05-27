@@ -2,18 +2,23 @@
 
 import { VagaInputComponent } from "../components/input/VagaInputComponent"
 import { CurriculoInputComponent } from "../components/input/CurriculoInputComponent"
+import { LoadingView } from "@/components/feedback/LoadingView"
+import { ErrorView } from "@/components/feedback/ErrorView"
 import { OutputComponent } from "@/components/output/OutputComponent"
+
 import { VagaInput, AnaliseOutput } from "@/types"
+import { DADOS_EXEMPLO_VAGA, TEXTO_EXEMPLO_CURRICULO } from "@/constants/mocks"
 import { useState, useTransition, useRef } from "react"
 import { analisarCurriculo } from "@/app/actions"
-import "./styles.css"
 
-type View = "input" | "loading" | "output" | "erro"
+export type View = "input" | "loading" | "output" | "erro"
 
 export default function Home() {
   const [view, setView] = useState<View>("input")
+
   const [erroForm, setErroForm] = useState("")
   const [erroResposta, setErroResposta] = useState("")
+  
   const [isPending, startTransition] = useTransition()
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -24,14 +29,6 @@ export default function Home() {
   })
 
   const [resposta, setResposta] = useState<AnaliseOutput | null>(null)
-
-  const dadosExemploVaga: VagaInput = {
-    requisitos: ["Experiência mínima de 2 anos com React e Next.js", "Domínio de TypeScript", "Conhecimento em Tailwind CSS"],
-    competencias: ["Arquitetura de Front-end", "Consumo de APIs RESTful", "Estado global com Context API ou Zustand"],
-    diferenciais: ["Conhecimento em Server Actions do Next.js", "Testes unitários com Jest ou Vitest"]
-  }
-
-  const textoExemploCurriculo = `Desenvolvedor Front-end focado no ecossistema React. Tenho 3 anos de experiência construindo aplicações web modernas utilizando Next.js, TypeScript e Tailwind CSS. Tenho facilidade em integrar APIs complexas e trabalhar com componentes reutilizáveis.`
 
   const temDadosPreenchidos = vaga.requisitos.length > 0
 
@@ -45,12 +42,12 @@ export default function Home() {
         formRef.current.reset()
       }
     } else {
-      setVaga(dadosExemploVaga)
+      setVaga(DADOS_EXEMPLO_VAGA)
 
       if (formRef.current) {
         const textarea = formRef.current.querySelector('textarea[name="textoCurriculo"]') as HTMLTextAreaElement
         if (textarea) {
-          textarea.value = textoExemploCurriculo
+          textarea.value = TEXTO_EXEMPLO_CURRICULO
         }
       }
     }
@@ -143,28 +140,11 @@ export default function Home() {
       )}
 
       {view === "loading" && (
-        <div className="flex flex-col items-center justify-center gap-4 py-12">
-          <div className="loading-spinner"></div>
-
-          <div className="flex flex-col items-center gap-1 text-center">
-            <h2 className="text-lg font-semibold text-gray-800 animate-pulse">
-              Analisando Currículo...
-            </h2>
-            <p className="text-sm text-gray-500">
-              A inteligência artificial está mapeando suas competências.
-            </p>
-          </div>
-        </div>
+        <LoadingView />
       )}
 
       {view === "erro" && (
-        <div className="flex flex-col items-center justify-center gap-5 text-center py-12 animate-cascade delay-1">
-          <h2 className="text-xl font-bold text-gray-900">Algo deu errado</h2>
-          <p className="text-sm text-gray-600 max-w-md leading-relaxed">{erroResposta}</p>
-          <button onClick={() => setView("input")} type="button" className="btn">
-            Tentar Novamente
-          </button>
-        </div>
+        <ErrorView erroResposta={erroResposta} setView={setView} />
       )}
 
       {view === "output" && resposta && (
