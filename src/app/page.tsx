@@ -67,11 +67,6 @@ export default function Home() {
     const formData = new FormData(event.currentTarget)
     const tipoCurriculo = formData.get("tipoCurriculo")
 
-    if (tipoCurriculo === "escolha") {
-      setErroForm("Por favor, selecione uma opção de envio do currículo (Texto ou PDF)!")
-      return
-    }
-
     if (tipoCurriculo === "text") {
       const texto = formData.get("textoCurriculo")?.toString().trim()
       if (!texto) {

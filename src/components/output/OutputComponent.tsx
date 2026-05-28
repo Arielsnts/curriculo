@@ -1,5 +1,6 @@
 import { AnaliseOutput } from "@/types"
 import styles from "@/styles/animation.module.css"
+
 type OutputProp = {
     resposta: AnaliseOutput
 }
