@@ -1,6 +1,4 @@
 .buttonWhite {
-  align-items: center;
-  justify-content: center;
   height: 2.5rem;
   padding: 0 24px;
   background-color: #ffffff;
@@ -12,56 +10,29 @@
 }
 
 .buttonWhite:hover {
-  background-color: #f9fafb;
+  background-color: #f5f5f5;
   border-color: #9ca3af;
   color: #111827;
   cursor: pointer;
 }
 
-.buttonWhite:active {
-  background-color: #f3f4f6;
-}
-
 .buttonBlue {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  height: 2.75rem;
+  padding: 0 32px;
+  border-radius: 10px;
+  border: none;
 
-    height: 2.75rem;
-    padding: 0 32px;
-    border-radius: 10px;
-    border: none;
+  font-size: 1rem;
+  font-weight: bold;
 
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+  background-color: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
 
-    background-color: #2563eb;
-    color: #ffffff;
-    cursor: pointer;
-
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
-
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease-in-out
 }
 
 .buttonBlue:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-1.5px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
-}
-
-.buttonBlue:active {
-    background-color: #1e40af;
-    transform: translateY(1px);
-    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
-}
-
-.buttonBlue:disabled {
-    background-color: #9ca3af;
-    color: #e5e7eb;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+  box-shadow: 0 0 8px #558bffa2;
+  background-color: #1d4ed8;
 }

@@ -57,11 +57,11 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
         </button>
 
         {/* LÓGICA DE LISTAGEM E REMOÇÃO */}
-        <div className="lista">
+        <div className={styles.tag}>
           {vaga.requisitos.map((req, index) => (
             <div key={index}>
               <span>{req}</span>
-              <button type="button" onClick={() => removerItem("requisitos", index)}>
+              <button className={styles.removeTag} type="button" onClick={() => removerItem("requisitos", index)}>
                 x
               </button>
             </div>
@@ -85,7 +85,7 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
         </button>
 
         {/* LÓGICA DE LISTAGEM E REMOÇÃO */}
-        <div className="lista">
+        <div className={styles.tag}>
           {vaga.competencias.map((comp, index) => (
             <div key={index}>
               <span>{comp}</span>
@@ -113,7 +113,7 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
         </button>
 
         {/* LÓGICA DE LISTAGEM E REMOÇÃO */}
-        <div className="lista">
+        <div className={styles.tag}>
           {vaga.diferenciais.map((dif, index) => (
             <div key={index}>
               <span>{dif}</span>
