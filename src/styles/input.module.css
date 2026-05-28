@@ -20,7 +20,7 @@
     outline: none;
     border-color: #3b82f6;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px #3b82f61a;
 }
 
 .inputText {
@@ -49,7 +49,7 @@
     padding: 0 24px;
     border-radius: 12px;
     border: none;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 0.875rem;
     background-color: #1f2937;
     color: #ffffff;
@@ -86,7 +86,7 @@
     gap: 6px;
     height: 2rem;
     padding: 0 8px 0 12px;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    background-color: #e5e7eb;
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -113,8 +113,7 @@
 
 .tag > div button:hover {
     color: #dc2626;
-    background-color: rgba(220, 38, 38, 0.1);
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 @keyframes surgir {

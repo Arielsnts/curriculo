@@ -11,7 +11,7 @@
     border-top: 3px solid #2563eb;
     border-radius: 50%;
     animation: girar 0.8s linear infinite;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 #0000000d;
 }
 
 @keyframes girar {

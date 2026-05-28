@@ -103,7 +103,7 @@ export default function Home() {
     <div className="flex flex-col gap-5 w-200 p-6">
       {view === "input" && (
         <div className="flex flex-col gap-5">
-          <h1 className="font-bold text-xl text-center">Analise o seu Currículo!</h1>
+          <h1 className="font-bold text-xl text-[#1f2937] text-center">Analise o seu Currículo!</h1>
 
 
           <p className="text-sm text-[#374151] text-center">

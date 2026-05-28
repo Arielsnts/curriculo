@@ -8,7 +8,7 @@ export function CurriculoInputComponent() {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="font-bold text-center text-xl">Currículo</h2>
+      <h2 className="font-bold text-center text-lg text-[#1f2937]">Currículo</h2>
 
       <input type="hidden" name="tipoCurriculo" value={inputType} />
 

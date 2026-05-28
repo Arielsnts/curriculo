@@ -39,7 +39,7 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="font-bold text-center text-xl">Vaga</h2>
+      <h2 className="font-bold text-center text-lg text-[#1f2937]">Vaga</h2>
 
       {/* CAMPO DE REQUISITOS */}
       <div className="flex flex-col gap-4">
