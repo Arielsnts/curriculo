@@ -1,6 +1,6 @@
 import { VagaInput } from "@/types"
 import { useState } from "react"
-import './styles.css'
+import styles from "@/styles/input.module.css"
 
 interface vagaProps {
   vaga: VagaInput
@@ -50,8 +50,9 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
           value={requisito}
           onChange={(e) => setRequisito(e.target.value)}
           placeholder="Ex: React"
+          className={styles.inputTags}
         />
-        <button type="button" onClick={addRequisito}>
+        <button type="button" onClick={addRequisito} className={styles.buttonBlack}>
           Adicionar Requisito
         </button>
 
@@ -77,8 +78,9 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
           value={competencia}
           onChange={(e) => setCompetencia(e.target.value)}
           placeholder="Ex: Liderança"
+          className={styles.inputTags}
         />
-        <button type="button" onClick={addCompetencia}>
+        <button type="button" onClick={addCompetencia} className={styles.buttonBlack}>
           Adicionar Competência
         </button>
 
@@ -101,11 +103,12 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
         <input
           id="diferencial"
           type="text"
-          value={diferencial} 
+          value={diferencial}
           onChange={(e) => setDiferencial(e.target.value)}
           placeholder="Ex: Next.js"
+          className={styles.inputTags}
         />
-        <button type="button" onClick={addDiferencial}>
+        <button type="button" onClick={addDiferencial} className={styles.buttonBlack}>
           Adicionar Diferencial
         </button>
 

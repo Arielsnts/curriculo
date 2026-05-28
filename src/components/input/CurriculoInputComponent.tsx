@@ -13,27 +13,27 @@ export function CurriculoInputComponent() {
       <input type="hidden" name="tipoCurriculo" value={inputType} />
 
       {inputType === "text" && (
-        <div className={`${styles.inputText} flex flex-col gap-4`}>
+        <div className={`flex flex-col gap-4`}>
           <label htmlFor="textoCurriculo">Digite o texto do seu Currículo:</label>
-          <textarea placeholder="Currículo em Texto" name="textoCurriculo" id="textoCurriculo" required></textarea>
-          <button onClick={() => setInputType("pdf")} type="button">Mudar para PDF</button>
+          <textarea className={styles.inputText} placeholder="Currículo em Texto" name="textoCurriculo" id="textoCurriculo" required></textarea>
+          <button onClick={() => setInputType("pdf")} type="button" className={styles.buttonBlack}>Mudar para PDF</button>
         </div>
       )}
 
       {inputType === "pdf" && (
         <div className="flex flex-col gap-4">
           <label htmlFor="arquivoCurriculo">Faça upload do seu Currículo (PDF):</label>
-          <input 
-            type="file" 
-            name="arquivoCurriculo" 
-            id="arquivoCurriculo" 
-            accept=".pdf" 
-            required 
+          <input
+            type="file"
+            name="arquivoCurriculo"
+            id="arquivoCurriculo"
+            accept=".pdf"
+            required
           />
-          <button onClick={() => setInputType("text")} type="button">Mudar para Texto</button>
+          <button onClick={() => setInputType("text")} type="button" className={styles.buttonBlack}>Mudar para Texto</button>
         </div>
       )}
-      
+
     </div>
   )
 }

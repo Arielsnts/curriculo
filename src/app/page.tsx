@@ -11,6 +11,8 @@ import { DADOS_EXEMPLO_VAGA, TEXTO_EXEMPLO_CURRICULO } from "@/constants/mocks"
 import { useState, useTransition, useRef } from "react"
 import { analisarCurriculo } from "@/app/actions"
 
+import generalStyles from "@/styles/general.module.css"
+
 export type View = "input" | "loading" | "output" | "erro"
 
 export default function Home() {
@@ -18,7 +20,7 @@ export default function Home() {
 
   const [erroForm, setErroForm] = useState("")
   const [erroResposta, setErroResposta] = useState("")
-  
+
   const [isPending, startTransition] = useTransition()
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -127,12 +129,12 @@ export default function Home() {
             <button
               type="button"
               onClick={gerenciarTemplate}
-              className={"btn"}
+              className={generalStyles.buttonWhite}
             >
               {temDadosPreenchidos ? "Limpar Form" : "Usar Dados de Teste"}
             </button>
 
-            <button type="submit" className="btn-analisar" disabled={isPending}>
+            <button type="submit" className={generalStyles.buttonBlue} disabled={isPending}>
               Analisar
             </button>
           </form>
@@ -150,7 +152,7 @@ export default function Home() {
       {view === "output" && resposta && (
         <div className="flex flex-col gap-6">
           <OutputComponent resposta={resposta} />
-          <button onClick={() => setView("input")} type="button" className="btn mt-4">
+          <button onClick={() => setView("input")} type="button" className={generalStyles.buttonWhite}>
             Analisar Outro Currículo
           </button>
         </div>

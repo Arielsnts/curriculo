@@ -9,13 +9,13 @@
   }
 }
 
-.animate-cascade {
+.animateCascade {
   opacity: 0;
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.40s; }
-.delay-3 { animation-delay: 0.80s; }
-.delay-4 { animation-delay: 1.20s; }
-.delay-5 { animation-delay: 1.60s; }
+.delay1 { animation-delay: 0.1s; }
+.delay2 { animation-delay: 0.40s; }
+.delay3 { animation-delay: 0.80s; }
+.delay4 { animation-delay: 1.20s; }
+.delay5 { animation-delay: 1.60s; }

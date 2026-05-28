@@ -1,3 +1,7 @@
+label {
+    font-weight: bold;
+}
+
 input[type="file"] {
     display: flex;
     align-items: center;
