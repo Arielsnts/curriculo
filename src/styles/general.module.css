@@ -1,38 +1,92 @@
+/*
+  Cores Principais
+    Azul primário: #2563e
+    Azul escuro: #1d4ed8
+    Azul mais escuro: #1e40af
+
+Cores de Fundo
+    Fundo claro: #f9fafb
+    Fundo branco: #ffffff
+    Fundo gradiente tag: #f3f4f6 a #e5e7eb
+    Fundo hover tag: rgba(220, 38, 38, 0.1)
+
+Cores de Texto
+    Texto escuro: #1f2937
+    Texto médio: #374151
+    Texto cinza: #6b7280
+    Texto claro: #9ca3af
+    Texto vermelho: #dc2626
+    Texto branco: #ffffff
+
+Cores de Borda e Sombras
+    Borda clara: #e5e7eb
+    Borda média: #d1d5db
+    Sombra azul: rgba(59, 130, 246, 0.1)
+    Sombra preta: rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05)
+
+Cores de Botão Secundário
+    Branco hover: #f9fafb
+    Borda hover: #d1d5db
+    Texto hover: #111827
+
+Cores de Arquivo
+    Botão preto: #1f2937
+    Botão preto hover: #374151
+*/
+
+
+
 .buttonWhite {
   height: 2.5rem;
   padding: 0 24px;
   background-color: #ffffff;
   color: #374151;
-  border: 1px solid #d1d5db;
-  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
   transition: all 0.2s ease-in-out;
-  font-weight: bold;
+  cursor: pointer;
 }
 
 .buttonWhite:hover {
-  background-color: #f5f5f5;
-  border-color: #9ca3af;
+  background-color: #f9fafb;
+  border-color: #d1d5db;
   color: #111827;
-  cursor: pointer;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.05);
+}
+
+.buttonWhite:active {
+  transform: translateY(0);
 }
 
 .buttonBlue {
   height: 2.75rem;
   padding: 0 32px;
-  border-radius: 10px;
+  border-radius: 12px;
   border: none;
-
-  font-size: 1rem;
-  font-weight: bold;
-
-  background-color: #2563eb;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
   cursor: pointer;
-
-  transition: all 0.3s ease-in-out
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .buttonBlue:hover {
-  box-shadow: 0 0 8px #558bffa2;
-  background-color: #1d4ed8;
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(37, 99, 235, 0.3);
+}
+
+.buttonBlue:active {
+  transform: translateY(0);
+}
+
+.buttonBlue:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }

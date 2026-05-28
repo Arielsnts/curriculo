@@ -5,40 +5,52 @@
 */
 
 label {
-    font-weight: bold;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 4px;
+  display: block;
 }
 
 input[type="file"] {
-    display: flex;
-    align-items: center;
-    height: 3rem;
-    padding: 8px 12px;
-    background-color: #dfdfdf;
-    border-radius: 10px;
-    color: #555555;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  height: 3rem;
+  padding: 0 12px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  color: #6b7280;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
 }
 
 input[type="file"]:hover {
-    box-shadow: 0 0 8px #0000002d;
+  border-color: #3b82f6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 input[type="file"]::file-selector-button {
-    height: 2rem;
-    padding: 0 14px;
-    margin-right: 12px;
-    background-color: #1e1e1e;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  height: 2.25rem;
+  padding: 0 16px;
+  margin-right: 12px;
+  background-color: #1f2937;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.813rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 input[type="file"]:hover::file-selector-button {
-    background-color: #333333;
+  background-color: #374151;
 }
 
+input[type="file"]::file-selector-button:hover {
+  transform: translateY(-1px);
+}
