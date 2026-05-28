@@ -3,7 +3,7 @@ import { FaLinkedin } from "react-icons/fa6";
 
 export function Footer() {
     return (
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-0 px-4 sm:px-8 md:px-12 py-4 h-auto sm:h-[60px] w-full bg-white">
+        <div className="flex flex-row sm:flex-row justify-between items-center gap-3 sm:gap-0 px-4 sm:px-8 md:px-12 py-4 h-auto sm:h-[60px] w-full bg-white">
             <p className="text-xs sm:text-sm font-medium text-gray-500">
                 Desenvolvido por Ariel Santos
             </p>

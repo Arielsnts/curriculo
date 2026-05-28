@@ -99,6 +99,7 @@ export default function Home() {
       }
     })
   }
+  
   return (
     <div className="flex flex-col gap-5 w-200 p-6">
       {view === "input" && (
@@ -116,7 +117,7 @@ export default function Home() {
             <CurriculoInputComponent />
 
             {erroForm && (
-              <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 p-4 text-sm font-medium text-red-800 animate-cascade delay-1">
+              <div className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
                 <span>{erroForm}</span>
               </div>
             )}

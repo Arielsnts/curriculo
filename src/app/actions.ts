@@ -1,7 +1,7 @@
 'use server'
 
 import { VagaInput } from "@/types"
-import { extrairTextoDePDF } from "@/lib/pdf"
+// import { extrairTextoDePDF } from "@/lib/pdf"
 import { gerarPrompt } from "@/lib/prompt"
 import { executarAnalise } from "@/lib/gemini"
 
@@ -21,24 +21,24 @@ export async function analisarCurriculo(formData: FormData) {
         const tipoCurriculo = formData.get('tipoCurriculo') as string
         let textoCurriculo: string
 
-        if (tipoCurriculo === 'pdf') {
-            const arquivoCurriculo = formData.get('arquivoCurriculo') as File
+        // if (tipoCurriculo === 'pdf') {
+        //     const arquivoCurriculo = formData.get('arquivoCurriculo') as File
 
-            if (!arquivoCurriculo || arquivoCurriculo.size === 0) {
-                throw new Error("Nenhum arquivo PDF foi enviado!")
-            }
+        //     if (!arquivoCurriculo || arquivoCurriculo.size === 0) {
+        //         throw new Error("Nenhum arquivo PDF foi enviado!")
+        //     }
 
-            textoCurriculo = await extrairTextoDePDF(arquivoCurriculo)
+        //     textoCurriculo = await extrairTextoDePDF(arquivoCurriculo)
+        // }
+        // else {
+        const texto = formData.get('textoCurriculo') as string
+
+        if (!texto.trim()) {
+            throw new Error("Nenhum texto foi enviado!")
         }
-        else {
-            const texto = formData.get('textoCurriculo') as string
 
-            if (!texto.trim()) {
-                throw new Error("Nenhum texto foi enviado!")
-            }
-
-            textoCurriculo = texto.trim()
-        }
+        textoCurriculo = texto.trim()
+        // }
 
         // geração do prompt
         const prompt = gerarPrompt(vaga, textoCurriculo)
