@@ -10,7 +10,6 @@ export async function extrairTextoDePDF(arquivo: File): Promise<string> {
     try {
         const buffer = await arquivo.arrayBuffer()
 
-
         const parser = new PDFParse({ data: buffer })
 
         const data = await parser.getText()

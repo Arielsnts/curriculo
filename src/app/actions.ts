@@ -36,24 +36,27 @@ export async function analisarCurriculo(
         // dados do currículo
         const tipoCurriculo = formData.get('tipoCurriculo') as string
 
+        let textoCurriculo = ""
+
         if (tipoCurriculo == "pdf") {
             const pdf = formData.get('arquivoCurriculo') as File
 
-            const texto = await extrairTextoDePDF(pdf)
+            textoCurriculo = await extrairTextoDePDF(pdf)
 
-            console.log(texto)
-
-            return {success: true, data: {
-                score: 1, pontosFortes: [], pontosFracos: [], resumo: "", recomendacoes: [] 
-            }}
+            if (!textoCurriculo || !textoCurriculo.trim()) {
+                return {
+                    success: false,
+                    message: "Texto do currículo não foi fornecido. Por favor, digite ou envie um arquivo PDF.",
+                }
+            }
         }
-
-        const textoCurriculo = formData.get('textoCurriculo') as string
-        if (!textoCurriculo || !textoCurriculo.trim()) {
-            return {
-                success: false,
-                message: "Texto do currículo não foi fornecido. Por favor, digite ou envie um arquivo PDF.",
-
+        else {
+            textoCurriculo = formData.get('textoCurriculo') as string
+            if (!textoCurriculo || !textoCurriculo.trim()) {
+                return {
+                    success: false,
+                    message: "Texto do currículo não foi fornecido. Por favor, digite ou envie um arquivo PDF.",
+                }
             }
         }
 
