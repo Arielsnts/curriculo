@@ -10,22 +10,6 @@ export interface VagaInput {
 }
 
 /**
- * Representa a entrada do currículo do usuário.
- */
-export interface CurriculoInput {
-    type: "text" | "pdf"
-    content: string
-}
-
-/**
- * Representa a união dos objetos de input VagaInput e CurriculoInput
- */
-export interface AnaliseInput {
-    vaga: VagaInput
-    curriculo: CurriculoInput
-}
-
-/**
  * Representa o formato exato do JSON que a API do GEMINI deve retornar
  */
 export interface AnaliseOutput {
@@ -34,9 +18,19 @@ export interface AnaliseOutput {
     resumo: string
 
     pontosFortes: string[]
-    
+
     pontosFracos: string[]
 
     recomendacoes: string[]
 }
 
+/**
+ * Representa a resposta a ser enviada pela server action analisarCurriculo
+ */
+export type AnalisarCurriculoResponse = {
+    success: true
+    data: AnaliseOutput
+} | {
+    success: false
+    message: string
+}

@@ -6,7 +6,7 @@ import { LoadingView } from "@/components/feedback/LoadingView"
 import { ErrorView } from "@/components/feedback/ErrorView"
 import { OutputComponent } from "@/components/output/OutputComponent"
 
-import { VagaInput, AnaliseOutput } from "@/types"
+import { VagaInput, AnaliseOutput, AnalisarCurriculoResponse } from "@/types"
 import { DADOS_EXEMPLO_VAGA, TEXTO_EXEMPLO_CURRICULO } from "@/constants/mocks"
 import { useState, useTransition, useRef } from "react"
 import { analisarCurriculo } from "@/app/actions"
@@ -19,7 +19,7 @@ export default function Home() {
   const [view, setView] = useState<View>("input")
 
   const [erroForm, setErroForm] = useState("")
-  const [erroResposta, setErroResposta] = useState("")
+  const [erroResposta, setErroResposta] = useState("Ocorreu um erro ao processar sua análise. Tente novamente mais tarde!")
 
   const [isPending, startTransition] = useTransition()
   const formRef = useRef<HTMLFormElement>(null)
@@ -88,18 +88,24 @@ export default function Home() {
 
     startTransition(async () => {
       try {
-        const resultado: AnaliseOutput = await analisarCurriculo(formData)
-        setResposta(resultado)
+        const resultado: AnalisarCurriculoResponse = await analisarCurriculo(formData)
+
+        if (!resultado.success) {
+          setErroResposta(resultado.message)
+          setView("erro")
+          return
+        }
+
+        setResposta(resultado.data)
         setView("output")
       }
       catch (e) {
         console.error(e)
-        setErroResposta("Ocorreu um erro ao processar sua análise. Verifique os dados e a conexão com a API do Gemini.")
         setView("erro")
       }
     })
   }
-  
+
   return (
     <div className="flex flex-col gap-5 w-200 p-6">
       {view === "input" && (
