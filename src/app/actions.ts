@@ -1,6 +1,7 @@
 'use server'
 
 import { VagaInput, AnalisarCurriculoResponse } from "@/types"
+import { extrairTextoDePDF } from "@/lib/pdf"
 import { gerarPrompt } from "@/lib/prompt"
 import { executarAnalise } from "@/lib/gemini"
 
@@ -33,7 +34,20 @@ export async function analisarCurriculo(
         }
 
         // dados do currículo
-        // const tipoCurriculo = formData.get('tipoCurriculo') as string
+        const tipoCurriculo = formData.get('tipoCurriculo') as string
+
+        if (tipoCurriculo == "pdf") {
+            const pdf = formData.get('arquivoCurriculo') as File
+
+            const texto = await extrairTextoDePDF(pdf)
+
+            console.log(texto)
+
+            return {success: true, data: {
+                score: 1, pontosFortes: [], pontosFracos: [], resumo: "", recomendacoes: [] 
+            }}
+        }
+
         const textoCurriculo = formData.get('textoCurriculo') as string
         if (!textoCurriculo || !textoCurriculo.trim()) {
             return {

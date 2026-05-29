@@ -1,7 +1,7 @@
 'use client'
 
-import { VagaInputComponent } from "../components/input/VagaInputComponent"
-import { CurriculoInputComponent } from "../components/input/CurriculoInputComponent"
+import { VagaInputComponent } from "@/components/input/VagaInputComponent"
+import { CurriculoInputComponent } from "@/components/input/CurriculoInputComponent"
 import { LoadingView } from "@/components/feedback/LoadingView"
 import { ErrorView } from "@/components/feedback/ErrorView"
 import { OutputComponent } from "@/components/output/OutputComponent"

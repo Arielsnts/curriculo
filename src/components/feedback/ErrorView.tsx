@@ -1,4 +1,4 @@
-import { View } from "@/app/page"
+import { View } from "@/components/page"
 import styles from "@/styles/general.module.css"
 import animation from "@/styles/animation.module.css"
 

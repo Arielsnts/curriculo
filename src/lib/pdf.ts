@@ -1,29 +1,30 @@
-import { PDFParse } from 'pdf-parse'
+import 'server-only'
+
+import 'pdf-parse/worker'
+import { PDFParse } from "pdf-parse"
 
 /**
  * Função que extrai o texto de um arquivo tipo File e retorna uma string limpa
  */
 export async function extrairTextoDePDF(arquivo: File): Promise<string> {
     try {
-        const arrayBuffer = await arquivo.arrayBuffer()
-        
-        const dadosBinarios = new Uint8Array(arrayBuffer)
+        const buffer = await arquivo.arrayBuffer()
 
-        const pdf = new PDFParse(dadosBinarios)
 
-        const resultado = await pdf.getText()
+        const parser = new PDFParse({ data: buffer })
 
-        const textoBruto = resultado.text || ""
-        const textoLimpo = textoBruto.trim()
+        const data = await parser.getText()
 
-        if (!textoLimpo) {
-            throw new Error("O arquivo PDF parece estar vazio ou não contém texto extraível.")
-        }
+        const resultado = data.text.trim()
 
-        return textoLimpo
+        await parser.destroy()
 
-    } catch (error: any) {
-        console.error("Erro na extração do PDF com a classe PDFParse:", error)
-        throw new Error("Falha ao ler o arquivo PDF. Certifique-se de que é um documento digital com texto selecionável.")
+        return resultado
     }
+    catch (e) {
+        console.error("Erro ao tentar processar o PDF!" + e)
+
+        throw new Error("Erro ao tentar processar o PDF!")
+    }
+
 }

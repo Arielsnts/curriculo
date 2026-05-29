@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
+    "@napi-rs/canvas": "^1.0.0",
+    "@napi-rs/canvas-linux-x64-gnu": "^1.0.0",
     "next": "16.2.6",
     "pdf-parse": "^2.4.5",
     "react": "19.2.4",
