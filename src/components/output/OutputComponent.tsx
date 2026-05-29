@@ -8,6 +8,18 @@ type OutputProp = {
 export function OutputComponent({ resposta }: OutputProp) {
   const dados: AnaliseOutput = resposta
 
+  if (dados.pontosFortes.length === 0) {
+    dados.pontosFortes.push("Não há pontos fortes.")
+  }
+
+  if (dados.pontosFracos.length === 0) {
+    dados.pontosFracos.push("Não há pontos a melhorar.")
+  }
+  
+  if (dados.recomendacoes.length === 0) {
+    dados.recomendacoes.push("Não há recomendações.")
+  }
+
   return (
     <div className="flex flex-col gap-6 w-full max-w-2xl mx-auto">
       <div className="text-center pb-4">
