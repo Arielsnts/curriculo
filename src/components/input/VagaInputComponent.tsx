@@ -1,33 +1,79 @@
 import { VagaInput } from "@/types"
 import { useState } from "react"
+import { LIMITES } from "@/constants"
 import styles from "@/styles/input.module.css"
 
 interface vagaProps {
   vaga: VagaInput
   setVaga: React.Dispatch<React.SetStateAction<VagaInput>>
+  setErroForm: React.Dispatch<React.SetStateAction<string>>
 }
 
-export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
+export function VagaInputComponent({ vaga, setVaga, setErroForm }: vagaProps) {
   const [requisito, setRequisito] = useState("")
   const [competencia, setCompetencia] = useState("")
   const [diferencial, setDiferencial] = useState("")
 
+  function validarTag(tag: string, tipo: string): boolean {
+    // Limpa erro anterior se houver
+    setErroForm("")
+
+    if (tag.length < LIMITES.MIN_CARACTERES_TAG) {
+      setErroForm(`A ${tipo} deve ter no mínimo ${LIMITES.MIN_CARACTERES_TAG} caracteres! "${tag}" é muito curto.`)
+      return false
+    }
+
+    if (tag.length > LIMITES.MAX_CARACTERES_TAG) {
+      setErroForm(`A ${tipo} deve ter no máximo ${LIMITES.MAX_CARACTERES_TAG} caracteres! "${tag.substring(0, 20)}..." excede o limite.`)
+      return false
+    }
+
+    return true
+  }
+
   function addRequisito() {
     if (!requisito.trim()) return
+
+    if (!validarTag(requisito.trim(), "requisito")) return
+
+    if (vaga.requisitos.length >= LIMITES.MAX_TAGS_POR_CATEGORIA) {
+      setErroForm(`Máximo de ${LIMITES.MAX_TAGS_POR_CATEGORIA} requisitos permitidos!`)
+      return
+    }
+
     setVaga({ ...vaga, requisitos: [...vaga.requisitos, requisito.trim()] })
     setRequisito("")
+    setErroForm("") // Limpa erro após adicionar com sucesso
   }
 
   function addCompetencia() {
     if (!competencia.trim()) return
+
+    if (!validarTag(competencia.trim(), "competência")) return
+
+    if (vaga.competencias.length >= LIMITES.MAX_TAGS_POR_CATEGORIA) {
+      setErroForm(`Máximo de ${LIMITES.MAX_TAGS_POR_CATEGORIA} competências permitidas!`)
+      return
+    }
+
     setVaga({ ...vaga, competencias: [...vaga.competencias, competencia.trim()] })
     setCompetencia("")
+    setErroForm("") // Limpa erro após adicionar com sucesso
   }
 
   function addDiferencial() {
     if (!diferencial.trim()) return
+
+    if (!validarTag(diferencial.trim(), "diferencial")) return
+
+    if (vaga.diferenciais.length >= LIMITES.MAX_TAGS_POR_CATEGORIA) {
+      setErroForm(`Máximo de ${LIMITES.MAX_TAGS_POR_CATEGORIA} diferenciais permitidos!`)
+      return
+    }
+
     setVaga({ ...vaga, diferenciais: [...vaga.diferenciais, diferencial.trim()] })
     setDiferencial("")
+    setErroForm("") // Limpa erro após adicionar com sucesso
   }
 
   function removerItem(lista: "requisitos" | "competencias" | "diferenciais", indexParaRemover: number) {
@@ -35,6 +81,7 @@ export function VagaInputComponent({ vaga, setVaga }: vagaProps) {
       ...vaga,
       [lista]: vaga[lista].filter((_, index) => index !== indexParaRemover)
     })
+    setErroForm("") // Limpa erro ao remover item
   }
 
   return (

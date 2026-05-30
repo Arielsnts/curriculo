@@ -46,3 +46,18 @@ export const RESPOSTA_TESTE: AnaliseOutput = {
     "Destacar a habilidade de comunicação assertiva, se aplicável, em uma seção de competências ou soft skills."
   ]
 }
+
+export const LIMITES = {
+  // Tags
+  MAX_TAGS_POR_CATEGORIA: 10,
+  MAX_CARACTERES_TAG: 40,
+  MIN_CARACTERES_TAG: 2,
+  
+  // Currículo texto
+  MAX_CARACTERES_CURRICULO_TEXTO: 5000,
+  MIN_CARACTERES_CURRICULO_TEXTO: 50,
+  
+  // PDF
+  MAX_TAMANHO_PDF_MB: 5,
+  MAX_TAMANHO_PDF_BYTES: 5 * 1024 * 1024, // 5MB
+}

@@ -7,7 +7,7 @@ import { ErrorView } from "@/components/feedback/ErrorView"
 import { OutputComponent } from "@/components/output/OutputComponent"
 
 import { VagaInput, AnaliseOutput, AnalisarCurriculoResponse } from "@/types"
-import { DADOS_EXEMPLO_VAGA, TEXTO_EXEMPLO_CURRICULO } from "@/constants/mocks"
+import { DADOS_EXEMPLO_VAGA, TEXTO_EXEMPLO_CURRICULO, LIMITES } from "@/constants/index"
 import { useState, useTransition, useRef } from "react"
 import { analisarCurriculo } from "@/app/actions"
 
@@ -69,16 +69,40 @@ export default function Home() {
 
     if (tipoCurriculo === "text") {
       const texto = formData.get("textoCurriculo")?.toString().trim()
+
       if (!texto) {
         setErroForm("Por favor, digite o texto do seu currículo!")
+        return
+      }
+
+      if (texto.length < LIMITES.MIN_CARACTERES_CURRICULO_TEXTO) {
+        setErroForm(`O texto do currículo deve ter no mínimo ${LIMITES.MIN_CARACTERES_CURRICULO_TEXTO} caracteres. Seu texto tem ${texto.length} caracteres.`)
+        return
+      }
+
+      // Valida tamanho máximo do texto
+      if (texto.length > LIMITES.MAX_CARACTERES_CURRICULO_TEXTO) {
+        setErroForm(`O texto do currículo deve ter no máximo ${LIMITES.MAX_CARACTERES_CURRICULO_TEXTO} caracteres. Seu texto tem ${texto.length} caracteres.`)
         return
       }
     }
 
     if (tipoCurriculo === "pdf") {
       const arquivo = formData.get("arquivoCurriculo") as File
+
       if (!arquivo || arquivo.size === 0) {
         setErroForm("Por favor, faça o upload do arquivo PDF do seu currículo!")
+        return
+      }
+
+      if (arquivo.size > LIMITES.MAX_TAMANHO_PDF_BYTES) {
+        const tamanhoMB = (arquivo.size / (1024 * 1024)).toFixed(2)
+        setErroForm(`O arquivo PDF deve ter no máximo ${LIMITES.MAX_TAMANHO_PDF_MB}MB. Seu arquivo tem ${tamanhoMB}MB.`)
+        return
+      }
+
+      if (arquivo.type !== 'application/pdf' && !arquivo.name.toLowerCase().endsWith('.pdf')) {
+        setErroForm("Por favor, faça o upload de um arquivo PDF válido!")
         return
       }
     }
@@ -118,7 +142,7 @@ export default function Home() {
           </p>
 
           <form ref={formRef} onSubmit={handleFormSubmit} className="flex flex-col gap-8">
-            <VagaInputComponent vaga={vaga} setVaga={setVaga} />
+            <VagaInputComponent vaga={vaga} setVaga={setVaga} setErroForm={setErroForm}/>
 
             <CurriculoInputComponent />
 

@@ -5,7 +5,6 @@ import Link from 'next/link'
 export default function Page() {
   return (
     <div className="flex flex-col gap-8 max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      {/* Header */}
       <div className="text-center pb-6">
         <h1 className="font-bold text-2xl sm:text-3xl text-gray-800">
           Sobre o Projeto
@@ -15,7 +14,6 @@ export default function Page() {
         </p>
       </div>
 
-      {/* Descrição do Projeto */}
       <section className="flex flex-col gap-3">
         <h2 className="font-bold text-lg text-gray-800 flex items-center gap-2">
           <span className="w-1 h-5 bg-blue-500 rounded-full"></span>
@@ -29,7 +27,6 @@ export default function Page() {
         </p>
       </section>
 
-      {/* Como funciona */}
       <section className="flex flex-col gap-4">
         <h2 className="font-bold text-lg text-gray-800 flex items-center gap-2">
           <span className="w-1 h-5 bg-blue-500 rounded-full"></span>
@@ -69,7 +66,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Tecnologias */}
       <section className="flex flex-col gap-3">
         <h2 className="font-bold text-lg text-gray-800 flex items-center gap-2">
           <span className="w-1 h-5 bg-blue-500 rounded-full"></span>
@@ -93,7 +89,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* Objetivo de Aprendizado */}
       <section className="flex flex-col gap-3">
         <h2 className="font-bold text-lg text-gray-800 flex items-center gap-2">
           <span className="w-1 h-5 bg-blue-500 rounded-full"></span>
@@ -126,15 +121,14 @@ export default function Page() {
         </ul>
       </section>
 
-      {/* Aviso de Dados */}
       <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
         <div className="flex gap-3">
           <div className="flex-1">
             <h3 className="font-semibold text-sm text-amber-800">Aviso sobre dados</h3>
             <p className="text-xs text-amber-700 mt-1 leading-relaxed">
               Este projeto utiliza a API do Google Gemini para processar os textos enviados. 
-              Os dados são enviados de forma segura para a API, mas não armazenamos nenhum 
-              currículo ou informação pessoal. Recomendamos remover dados sensíveis antes de 
+              Os dados são enviados de forma segura para a API, mas não é armazenado nenhum 
+              currículo ou informação pessoal. Recomenda-se remover dados sensíveis antes de 
               realizar as análises. Este é um projeto educacional e não deve ser usado para 
               avaliações reais sem validação adicional.
             </p>
@@ -142,7 +136,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Botão de Voltar */}
       <div className="flex justify-center pt-4">
         <Link
           href="/"
